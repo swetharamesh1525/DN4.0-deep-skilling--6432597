@@ -4,12 +4,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class LibraryManagementApplication {
     public static void main(String[] args) {
+        // Load Spring XML configuration
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        // Fetch the BookService bean
-        BookService service = context.getBean("bookService", BookService.class);
+        // Get BookService bean from context
+        BookService bookService = context.getBean("bookService", BookService.class);
 
-        // Call method to check if dependency is injected
-        service.displayBooks();
+        // Call the method
+        bookService.displayBooks();
     }
 }
