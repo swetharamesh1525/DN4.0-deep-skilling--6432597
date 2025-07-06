@@ -1,5 +1,5 @@
-package com.cognizant.orm_learn.repository;
-import com.cognizant.orm_learn.model.Country;
+package com.cognizant.country_insert.repository;
+import com.cognizant.country_insert.model.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

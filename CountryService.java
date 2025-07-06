@@ -1,11 +1,8 @@
-package com.cognizant.orm_learn.service;
-
-import com.cognizant.orm_learn.model.Country;
-import com.cognizant.orm_learn.repository.CountryRepository;
+package com.cognizant.country_insert.service;
+import com.cognizant.country_insert.model.Country;
+import com.cognizant.country_insert.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CountryService {
@@ -13,7 +10,7 @@ public class CountryService {
     @Autowired
     private CountryRepository countryRepository;
 
-    public List<Country> getAllCountries() {
-        return countryRepository.findAll();
+    public void addCountry(Country country) {
+        countryRepository.save(country);
     }
 }
