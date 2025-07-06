@@ -1,5 +1,6 @@
-package com.cognizant.country_find.model;
+package com.example.countrycrud.model;
 import jakarta.persistence.*;
+
 @Entity
 @Table(name = "country")
 public class Country {
@@ -11,8 +12,7 @@ public class Country {
     @Column(name = "co_name")
     private String name;
 
-    // Getters, Setters, toString()
-
+    // Getters and Setters
     public String getCode() { return code; }
     public void setCode(String code) { this.code = code; }
 

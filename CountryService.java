@@ -1,6 +1,7 @@
-package com.cognizant.country_find.service;
-import com.cognizant.country_find.model.Country;
-import com.cognizant.country_find.repository.CountryRepository;
+package com.example.countrycrud.service;
+
+import com.example.countrycrud.model.Country;
+import com.example.countrycrud.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,12 @@ public class CountryService {
     @Autowired
     private CountryRepository countryRepository;
 
+    public void addCountry(Country country) {
+        countryRepository.save(country);
+    }
+
     public Country findCountryByCode(String code) {
         Optional<Country> result = countryRepository.findById(code);
-        return result.orElse(null);  // or throw custom exception if needed
+        return result.orElse(null);
     }
 }
-
