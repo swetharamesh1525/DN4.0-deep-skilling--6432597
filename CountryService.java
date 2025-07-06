@@ -1,11 +1,10 @@
-package com.example.countrycrud.service;
-
-import com.example.countrycrud.model.Country;
-import com.example.countrycrud.repository.CountryRepository;
+package com.cognizant.countryquery.service;
+import com.cognizant.countryquery.model.Country;
+import com.cognizant.countryquery.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CountryService {
@@ -13,12 +12,15 @@ public class CountryService {
     @Autowired
     private CountryRepository countryRepository;
 
-    public void addCountry(Country country) {
-        countryRepository.save(country);
+    public List<Country> searchContaining(String text) {
+        return countryRepository.findByNameContaining(text);
     }
 
-    public Country findCountryByCode(String code) {
-        Optional<Country> result = countryRepository.findById(code);
-        return result.orElse(null);
+    public List<Country> searchContainingSorted(String text) {
+        return countryRepository.findByNameContainingOrderByNameAsc(text);
+    }
+
+    public List<Country> searchStartingWith(String prefix) {
+        return countryRepository.findByNameStartingWith(prefix);
     }
 }

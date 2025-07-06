@@ -1,4 +1,4 @@
-package com.example.countrycrud.model;
+package com.cognizant.countryquery.model;
 import jakarta.persistence.*;
 
 @Entity
