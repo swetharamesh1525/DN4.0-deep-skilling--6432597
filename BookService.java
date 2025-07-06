@@ -1,15 +1,22 @@
-package com.library.service;
-import com.library.repository.BookRepository;
+package com.sms.service;
+
+import com.sms.repository.BookRepository;
+import java.util.List;
+
 public class BookService {
     private BookRepository bookRepository;
 
-    // Setter for Dependency Injection
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
-    public void displayBooks() {
-        System.out.println("BookService: Displaying books");
-        bookRepository.getBooks();
+    public void displayBookDetails() {
+        List<String> books = bookRepository.getAllBooks();
+        System.out.println(" Welcome to the Library Management System");
+        System.out.println("Total number of books available: " + books.size());
+
+        for (String book : books) {
+            System.out.println("- \"" + book + "\" is available in our collection.");
+        }
     }
 }
