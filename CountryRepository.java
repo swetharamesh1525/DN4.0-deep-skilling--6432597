@@ -1,5 +1,5 @@
-package com.cognizant.country_insert.repository;
-import com.cognizant.country_insert.model.Country;
+package com.cognizant.country_find.repository;
+import com.cognizant.country_find.model.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

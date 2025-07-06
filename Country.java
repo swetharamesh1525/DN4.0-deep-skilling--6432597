@@ -1,7 +1,5 @@
-package com.cognizant.orm_learn.model;
-
+package com.cognizant.country_find.model;
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "country")
 public class Country {
@@ -13,19 +11,13 @@ public class Country {
     @Column(name = "co_name")
     private String name;
 
-    public String getCode() {
-        return code;
-    }
-    public void setCode(String code) {
-        this.code = code;
-    }
+    // Getters, Setters, toString()
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
     @Override
     public String toString() {
