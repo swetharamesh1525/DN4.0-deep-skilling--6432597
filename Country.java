@@ -1,23 +1,38 @@
-package com.cognizant.countryquery.model;
-import jakarta.persistence.*;
+package com.cognizant.spring_learn;
 
-@Entity
-@Table(name = "country")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Country {
 
-    @Id
-    @Column(name = "co_code")
-    private String code;
+    private static final Logger LOGGER = LoggerFactory.getLogger(Country.class);
 
-    @Column(name = "co_name")
+    private String code;
     private String name;
 
-    // Getters and Setters
-    public String getCode() { return code; }
-    public void setCode(String code) { this.code = code; }
+    public Country() {
+        LOGGER.debug("Inside Country Constructor");
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getCode() {
+        LOGGER.debug("Inside getCode()");
+        return code;
+    }
+
+    public void setCode(String code) {
+        LOGGER.debug("Inside setCode()");
+        this.code = code;
+    }
+
+    public String getName() {
+        LOGGER.debug("Inside getName()");
+        return name;
+    }
+
+    public void setName(String name) {
+        LOGGER.debug("Inside setName()");
+        this.name = name;
+    }
 
     @Override
     public String toString() {
