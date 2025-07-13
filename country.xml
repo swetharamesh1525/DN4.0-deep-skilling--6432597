@@ -7,4 +7,24 @@
         <property name="code" value="IN"/>
         <property name="name" value="India"/>
     </bean>
+
+    <bean id="countryList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="in"/>
+                <bean class="com.cognizant.Rest_Demo.model.Country">
+                    <property name="code" value="US"/>
+                    <property name="name" value="United States"/>
+                </bean>
+                <bean class="com.cognizant.Rest_Demo.model.Country">
+                    <property name="code" value="JP"/>
+                    <property name="name" value="Japan"/>
+                </bean>
+                <bean class="com.cognizant.Rest_Demo.model.Country">
+                    <property name="code" value="DE"/>
+                    <property name="name" value="Germany"/>
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
 </beans>

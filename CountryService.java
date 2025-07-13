@@ -1,7 +1,9 @@
-package com.cognizant.countryquery.service;
-import com.cognizant.countryquery.model.Country;
-import com.cognizant.countryquery.repository.CountryRepository;
+package com.cognizant.Rest_Demo.service;
+
+import com.cognizant.Rest_Demo.model.Country;
+import com.cognizant.Rest_Demo.service.exception.CountryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,17 +12,14 @@ import java.util.List;
 public class CountryService {
 
     @Autowired
-    private CountryRepository countryRepository;
+    private ApplicationContext context;
 
-    public List<Country> searchContaining(String text) {
-        return countryRepository.findByNameContaining(text);
-    }
+    public Country getCountry(String code) throws CountryNotFoundException {
+        List<Country> countryList = (List<Country>) context.getBean("countryList");
 
-    public List<Country> searchContainingSorted(String text) {
-        return countryRepository.findByNameContainingOrderByNameAsc(text);
-    }
-
-    public List<Country> searchStartingWith(String prefix) {
-        return countryRepository.findByNameStartingWith(prefix);
+        return countryList.stream()
+                .filter(c -> c.getCode().equalsIgnoreCase(code))
+                .findFirst()
+                .orElseThrow(() -> new CountryNotFoundException("Country not found"));
     }
 }
