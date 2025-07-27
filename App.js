@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
-import CalculateScore from './Components/CalculateScore';
 
+import './App.css';
 function App() {
   return (
-    <div className="App">
-      <CalculateScore name="Swetha" school="ABC Matric" total={480} goal={6} />
+    <div>
+      <h1>Welcome to the first session of React</h1>
     </div>
   );
 }
 
 export default App;
+
