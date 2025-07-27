@@ -1,14 +1,11 @@
 import React from 'react';
-import Home from './Components/Home';
-import About from './Components/About';
-import Contact from './Components/Contact';
+import './App.css';
+import CalculateScore from './Components/CalculateScore';
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <About />
-      <Contact />
+      <CalculateScore name="Swetha" school="ABC Matric" total={480} goal={6} />
     </div>
   );
 }
