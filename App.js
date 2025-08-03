@@ -1,51 +1,73 @@
-import React, { useState } from 'react';
-import BookDetails from './BookDetails';
-import BlogDetails from './BlogDetails';
-import CourseDetails from './CourseDetails';
+import React from 'react';
 
 function App() {
-  const [showComponent, setShowComponent] = useState('books'); // Conditional rendering flag
+  // Step 1: Page heading as JSX
+  const heading = <h1>Office Space Rental Application</h1>;
 
-  const books = [
-    { title: 'Atomic Habits', author: 'James Clear' },
-    { title: 'The Alchemist', author: 'Paulo Coelho' }
+  // Step 2: Image attribute JSX
+  const officeImageUrl = "https://via.placeholder.com/400x200?text=Office+Image";
+
+  // Step 3: Single Office Object
+  const office = {
+    name: "TechSpace Solutions",
+    rent: 55000,
+    address: "2nd Floor, Innovate Tower, Bangalore"
+  };
+
+  // Step 4: List of Offices
+  const officeList = [
+    {
+      name: "Elite Office Hub",
+      rent: 45000,
+      address: "3rd Floor, Business Park, Chennai"
+    },
+    {
+      name: "Urban Workbay",
+      rent: 75000,
+      address: "5th Floor, Cyber Heights, Hyderabad"
+    },
+    {
+      name: "NextGen Offices",
+      rent: 62000,
+      address: "1st Floor, Skyline Plaza, Pune"
+    },
+    {
+      name: "Budget Business Suites",
+      rent: 39000,
+      address: "Near Tech Junction, Kochi"
+    }
   ];
 
-  const blogs = [
-    { title: 'React Tips', content: 'Use hooks and keep components small.' },
-    { title: 'State vs Props', content: 'Props are immutable, state is local.' }
-  ];
-
-  const courses = [
-    { name: 'React Fundamentals', duration: '3 Weeks' },
-    { name: 'Advanced JavaScript', duration: '4 Weeks' }
-  ];
+  // Step 5: Function to get rent color
+  const getRentColor = (rent) => {
+    return {
+      color: rent > 60000 ? 'green' : 'red'
+    };
+  };
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h1>Blogger App Dashboard</h1>
+      {heading}
 
-      {/* Conditional Buttons */}
-      <div style={{ marginBottom: '20px' }}>
-        <button onClick={() => setShowComponent('books')}>Show Book Details</button>
-        <button onClick={() => setShowComponent('blogs')}>Show Blog Details</button>
-        <button onClick={() => setShowComponent('courses')}>Show Course Details</button>
+      <img src={officeImageUrl} alt="Office" style={{ width: '100%', maxWidth: '600px', marginBottom: '20px' }} />
+
+      <h2>Featured Office:</h2>
+      <div>
+        <p><strong>Name:</strong> {office.name}</p>
+        <p><strong>Rent:</strong> <span style={getRentColor(office.rent)}>{office.rent}</span></p>
+        <p><strong>Address:</strong> {office.address}</p>
       </div>
 
-      {/* Conditional Rendering Approaches */}
+      <hr />
 
-      {/* 1. if-else rendering */}
-      {showComponent === 'books' && <BookDetails books={books} />}
-
-      {/* 2. Ternary operator */}
-      {showComponent === 'blogs'
-        ? <BlogDetails blogs={blogs} />
-        : showComponent === 'courses' && <CourseDetails courses={courses} />
-      }
-
-      {/* 3. Switch-like rendering with element variable (alternative way) */}
-      {/* This method isn't needed if using above methods but shown here for demo */}
-      {/* let component; if (showComponent === 'books') component = <BookDetails ... /> */}
+      <h2>Other Available Offices</h2>
+      {officeList.map((o, index) => (
+        <div key={index} style={{ marginBottom: '20px', border: '1px solid #ccc', padding: '10px' }}>
+          <p><strong>Name:</strong> {o.name}</p>
+          <p><strong>Rent:</strong> <span style={getRentColor(o.rent)}>{o.rent}</span></p>
+          <p><strong>Address:</strong> {o.address}</p>
+        </div>
+      ))}
     </div>
   );
 }
