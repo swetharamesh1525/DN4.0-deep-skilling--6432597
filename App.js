@@ -1,12 +1,16 @@
+import React from 'react';
+import ListofPlayers from './ListofPlayers';
+import IndianPlayers from './IndianPlayers';
 
-import './App.css';
 function App() {
+  const flag = false; // Toggle this to false to test other component
+
   return (
-    <div>
-      <h1>Welcome to the first session of React</h1>
+    <div className="App">
+      <h1>Welcome to Cricket App</h1>
+      {flag ? <ListofPlayers /> : <IndianPlayers />}
     </div>
   );
 }
 
 export default App;
-
